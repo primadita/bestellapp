@@ -1,0 +1,15 @@
+/* für standard styling */
+.content{
+    display: flex;
+}
+.content-wrapper{
+    width: calc(100% - 308px);
+}
+.basket-wrapper{
+    width: 300px;
+    flex-grow: 1;
+}
+.basket{
+    position: sticky;
+    top: 0;
+}
