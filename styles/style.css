@@ -1,4 +1,8 @@
 /* für standard styling */
+header{
+    background: orange;
+    height: 20dvh;
+}
 .content{
     display: flex;
 }
