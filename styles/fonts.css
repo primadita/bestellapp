@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: 'Manrope-Medium';
+    src: url('../assets/fonts/Manrope-Medium.ttf');
+}
+
+@font-face {
     font-family: 'Manrope-Regular';
     src: url('../assets/fonts/Manrope-Regular.ttf');
 }
@@ -22,12 +27,14 @@
     font-family: 'Manrope-ExtraLight';
     src: url('../assets/fonts/Manrope-ExtraLight.ttf');
 }
+
 body{
     font-size: min(1.6rem 1.8rem);
     color: black;
 }
+
 h1{
-    font-family: 'Manrope-Bold';
+    font-family: 'Manrope-Medium';
     font-size: 2rem;
     text-align: center;
 }

@@ -1,18 +1,23 @@
 class Menu {
     // #region attributes
+    restaurant;
     name;
     category;
     description;
-    img;
     price;
+    isFavorite;
+    img;
+    #parent = ""
     // #endregion
 
-    constructor(dishName, dishCategory, dishDescription, dishImg, dishPrice){
-        this.name = dishName;
+    constructor(restName, dishCategory, dishName, dishDescription, dishPrice, isFavoriteDish, dishImg){
+        this.restaurant = restName;
         this.category = dishCategory;
+        this.name = dishName;
         this.description = dishDescription;
-        this.img = dishImg;
         this.price = dishPrice;
+        this.isFavorite = isFavoriteDish;
+        this.img = dishImg;
     }
 
     // #region methods
@@ -22,16 +27,24 @@ class Menu {
 class Restaurant {
     // #region attributes
     name;
+    taste;
     address;
-    openingtime;
+    openingTime;
     rate;
+    deliveryCost;
+    bannerImg;
+    logoImg;
     // #endregion
     
-    constructor(restName, restAddress, restOpeningTime, restRate){
+    constructor(restName, restCategory, restAddress, restOpeningTime, restRate, restDeliveryCost,restBanner, restLogo){
         this.name = restName;
+        this.taste = restCategory;
         this.address = restAddress;
-        this.openingtime = restOpeningTime;
+        this.openingTime = restOpeningTime; 
         this.rate = restRate;
+        this.deliveryCost = restDeliveryCost;
+        this.bannerImg = restBanner; 
+        this.logoImg = restLogo;
     }
 
     // #region methods
