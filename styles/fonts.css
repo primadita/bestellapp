@@ -22,3 +22,15 @@
     font-family: 'Manrope-ExtraLight';
     src: url('../assets/fonts/Manrope-ExtraLight.ttf');
 }
+body{
+    font-size: min(1.6rem 1.8rem);
+    color: black;
+}
+h1{
+    font-family: 'Manrope-Bold';
+    font-size: 2rem;
+    text-align: center;
+}
+footer{
+    color: white;
+}

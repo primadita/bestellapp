@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestellApp</title>
-    <link rel="shortcut icon" href="./assets/icons/favicon-16x16.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/basket.css">
-    
+    <script src="script/script.js" defer></script>
 
 </head>
 <body>
     <header>
-        <img src="/assets/icons/bestellapp-logo.svg" alt="BestellappLogo">
+        <div class="header-wrapper">
+            <img src="/assets/icons/bestellapp-logo.svg" alt="Bestellapp logo">
+            <img src="/assets/icons/burgermenu-white.png" alt="symbol of burgermenu">
+        </div>
     </header>
     <main>
-        <div class="content-wrapper">
-            <section class="content">
+        <div class="main-wrapper">
+            <section class="content-wrapper">
                 <div class="test-content">
-
+                    MENÜ
+                    <button onclick="showShoppingCart()">add</button>
                 </div>
             </section>
-            <section class="basket-wrapper">
+            <section class="basket-wrapper d-none" id="basket-sect">
                 <div class="basket">
-                    
+                    <h1>Warenkorb</h1>
+                    <div id="shopping-cart">
+
+                    </div>
                 </div>
 
             </section>

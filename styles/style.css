@@ -1,19 +1,43 @@
 /* für standard styling */
+/* #region HEADER */
 header{
-    background: orange;
-    height: 20dvh;
+    background: #ff8000;
+    height: 10dvh;
+    display: flex;
+    .header-wrapper{
+        width: 100%;
+        max-width: 1920px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 20px;
+        img{
+            height: 8dvh;
+        }
+    }
 }
-.content{
+
+/* #region MAIN BEREICH */
+.main-wrapper{
+    width: 100%;
+    max-width: 1920px;
     display: flex;
 }
 .content-wrapper{
-    width: calc(100% - 308px);
+    min-width: calc(100% - 308px);
+    width: 100%;
+    height: auto;
+    min-height: calc(100dvh - 10dvh - 5dvh);
 }
-.basket-wrapper{
-    width: 300px;
-    flex-grow: 1;
+
+/* #endregion */
+
+/* #region FOOTER */
+footer{
+    height: 5dvh;
+    background-color: #ff8000;
+    display: flex;
+    align-items: center;
+    color: white;
 }
-.basket{
-    position: sticky;
-    top: 0;
-}
+/* #endregion */

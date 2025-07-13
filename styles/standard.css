@@ -11,3 +11,15 @@ html{
     font-size: 10px;
     font-family: 'Manrope-Regular';
 }
+header,
+main,
+footer {
+  display: flex;
+  justify-content: center;
+}
+.d-flex{
+    display: flex;
+}
+.d-none{
+    display: none;
+}
