@@ -1,14 +1,27 @@
-const takumi = new Restaurant("Takumi Tonkotsu Ramen", "japanisch", "Neusser Str. 336-338,50733 Köln", "montags-freitags 1200 - 2200; samstags - sonntags 1100 - 2400", 4.8, 2.99, "takumi-banner.jpg", "takumi-logo.jpg");
+// #region Global Definition
+const restaurant = [new Restaurant("Takumi Tonkotsu Ramen", "japanisch", "Neusser Str. 336-338,50733 Köln", "montags-freitags 1200 - 2200; samstags - sonntags 1100 - 2400", 4.8, 2.99, "takumi-banner.jpg", "takumi-logo.png")];
 
-const takumimenu = [
-    new Menu(takumi, "Ramen", "Tonkotsu Ramen", "Suppenbruhe mit Schweineknochen, Schweinekopf und Gemüse für 8 Stunden gekocht und Nudeln aus Japan", 12.5, true, "tonkotsu-ramen.jpg"),
-    new Menu(takumi, "Ramen", "Spesial Tonkotsu Ramen","Tonkotsu-Ramen mit Schweinebauchbraten, frittierten Hähnchenstücken und Garnelen", 19.8, true, "special-tonkotsu.jpg"),
-    new Menu(takumi, "Ramen", "Surf and Turn Tonkotsu", "Tonkotsu-Ramen mit gebratenem Lachs", 20.8, true, "surf-and-turf-tonkotsu.jpg"),
-    new Menu(takumi, "Ramen", "Mala Spicy", "Tonkotsu mit scharfem Gewürz und echtem Koriander", 14.8, false, "mala-spicy.jpg"),
-    new Menu(takumi, "Gyoza", "Vegan Gyoza", "Mit Miso und Sesam. Es wird mit Gemüse und Hähnchenfleisch gefüllt und in einer Größe deiner Wahl serviert.", 7.6, false, "vegan-gyoza.jpg"),
-    new Menu(takumi, "Reis", "Mini Donburi", "Auf Reis. Wird mit einer Zutat deiner Wahl zubereitet.", 15.8, false, "mini-donburi.jpg")
+const takumiMenu = [
+    new Menu(restaurant[0], "Ramen", "Tonkotsu Ramen", "Suppenbruhe mit Schweineknochen, Schweinekopf und Gemüse für 8 Stunden gekocht und Nudeln aus Japan", 12.5, true, "tonkotsu-ramen.jpg"),
+    new Menu(restaurant[0], "Ramen", "Spesial Tonkotsu Ramen","Tonkotsu-Ramen mit Schweinebauchbraten, frittierten Hähnchenstücken und Garnelen", 19.8, true, "special-tonkotsu.jpg"),
+    new Menu(restaurant[0], "Ramen", "Surf and Turn Tonkotsu", "Tonkotsu-Ramen mit gebratenem Lachs", 20.8, true, "surf-and-turf-tonkotsu.jpg"),
+    new Menu(restaurant[0], "Ramen", "Mala Spicy", "Tonkotsu mit scharfem Gewürz und echtem Koriander", 14.8, false, "mala-spicy.jpg"),
+    new Menu(restaurant[0], "Gyoza", "Gyoza", "Mit Miso und Sesam. Es wird mit Gemüse und Hähnchenfleisch gefüllt und in einer Größe deiner Wahl serviert.", 5.8, true, "gyoza.jpg"),
+    new Menu(restaurant[0], "Gyoza", "Vegan Gyoza", "Mit Miso und Sesam. Es wird mit Gemüse gefüllt und in einer Größe deiner Wahl serviert.", 7.6, false, "vegan-gyoza.jpg"),
+    new Menu(restaurant[0], "Reis", "Mini Donburi", "Auf Reis. Wird mit einer Zutat deiner Wahl zubereitet.", 15.8, false, "mini-donburi.jpg")
 ];
+// #endregion
 
+// #region Rendering
+function renderRestaurantMainPage(restId){
+    const restHeaderRef = document.getElementById("content");
+    restHeaderRef.innerHTML = "";
+    for (let restId = 0; restId < restaurant.length; restId++)
+    restHeaderRef.innerHTML += getRestaurantMainPageTemplate(restId);
+}
+// #endregion
+
+// #region Main Site
 function showShoppingCart(){
     const basketRef = document.getElementById("basket-sect");
     const shoppingCartRef = document.getElementById("shopping-cart");
@@ -17,4 +30,22 @@ function showShoppingCart(){
     basketRef.classList.remove('d-none');
     basketRef.classList.add('d-flex');
 }
+
+function searchCategory(array){
+    let categoryList =[];
+    for (let i = 0; i < array.length; i++){
+        takumiMenu[i].category;
+        if (!categoryList.includes(takumiMenu[i].category)){
+            categoryList.push(takumiMenu[i].category);
+        }
+    }
+    return categoryList;
+}
+
+console.log(searchCategory(takumiMenu));
+// #endregion
+
+// #region Shopping Cart
+
+// #endregion
 

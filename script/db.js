@@ -1,3 +1,5 @@
+
+
 class Menu {
     // #region attributes
     restaurant;
@@ -7,7 +9,8 @@ class Menu {
     price;
     isFavorite;
     img;
-    #parent = ""
+    imgText;
+    #parentFolder = "./assets/img/";
     // #endregion
 
     constructor(restName, dishCategory, dishName, dishDescription, dishPrice, isFavoriteDish, dishImg){
@@ -17,10 +20,17 @@ class Menu {
         this.description = dishDescription;
         this.price = dishPrice;
         this.isFavorite = isFavoriteDish;
-        this.img = dishImg;
+        this.getCompletePath(dishImg);
+        this.createAltText();
     }
 
     // #region methods
+    getCompletePath(dishImg){
+        this.img = this.#parentFolder + dishImg;
+    }
+    createAltText(){
+        this.imgText = "This is the image of " + this.img;
+    }
     // #endregion
 }
 
@@ -34,6 +44,9 @@ class Restaurant {
     deliveryCost;
     bannerImg;
     logoImg;
+    bannerText;
+    logoText;
+    #parentFolder = "./assets/img/";
     // #endregion
     
     constructor(restName, restCategory, restAddress, restOpeningTime, restRate, restDeliveryCost,restBanner, restLogo){
@@ -43,10 +56,19 @@ class Restaurant {
         this.openingTime = restOpeningTime; 
         this.rate = restRate;
         this.deliveryCost = restDeliveryCost;
-        this.bannerImg = restBanner; 
-        this.logoImg = restLogo;
+        this.getCompletePath(restBanner, restLogo);
+        this.createAltText();
     }
 
     // #region methods
+    getCompletePath(restBanner, restLogo){
+        this.bannerImg = this.#parentFolder + restBanner;
+        this.logoImg = this.#parentFolder + restLogo;
+    }
+    createAltText(){
+        this.bannerText = "This is header of " + this.name;
+        this.logoText = "This is the logo of" + this.name;
+    };
+        
     // #endregion
 }

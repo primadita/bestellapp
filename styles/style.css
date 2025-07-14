@@ -16,6 +16,7 @@ header{
         }
     }
 }
+/* #endregion */
 
 /* #region MAIN BEREICH */
 .main-wrapper{
@@ -28,6 +29,39 @@ header{
     width: 100%;
     height: auto;
     min-height: calc(100dvh - 10dvh - 5dvh);
+    .content{
+        width: 100%;
+        max-width: 1920px;
+        position: sticky;
+        #restaurant-header{
+            background: url('../assets/img/takumi-banner-small.jpg');
+            height: 25dvh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            img{
+                height: 20dvh;
+                position: absolute;
+                bottom: -10dvh;
+            }
+        }
+        #restaurant-info{
+            padding: 16px 8px;
+            h1{
+                text-align: left;
+            }
+            div{
+                display: flex;
+                gap: 10px;
+                img{
+                    height: min(2.2rem, 4.8rem);
+                }
+            }
+            
+        }
+    }
 }
 
 /* #endregion */

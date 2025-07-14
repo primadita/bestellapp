@@ -29,13 +29,14 @@
 }
 
 body{
-    font-size: min(1.6rem 1.8rem);
+    font-size: min(16px, 18px);
+    font-family: 'Manrope-Regular';
     color: black;
 }
 
 h1{
     font-family: 'Manrope-Medium';
-    font-size: 2rem;
+    font-size: min(3rem, 6rem);
     text-align: center;
 }
 footer{

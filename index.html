@@ -9,22 +9,26 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/basket.css">
-    <script src="script/db.js"></script>
+    <script src="script/template.js" defer></script>
+    <script src="script/db.js" defer></script>
     <script src="script/script.js" defer></script>
 </head>
 
-<body>
+<body onload="renderRestaurantMainPage()">
     <header>
         <div class="header-wrapper">
-            <img src="/assets/icons/bestellapp-logo.svg" alt="Bestellapp logo">
-            <img src="/assets/icons/burgermenu-white.png" alt="symbol of burgermenu">
+            <img src="./assets/icons/bestellapp-logo.svg" alt="Bestellapp logo">
+            <img src="./assets/icons/burgermenu-white.png" alt="symbol of burgermenu">
         </div>
     </header>
     <main>
         <div class="main-wrapper">
             <section class="content-wrapper">
-                <div class="test-content">
-                    
+                <div id="content" class="content">
+                    <!-- <div id="restaurant-header">
+                        <img src='${restaurant[0].logoImg}' alt="restaurant[0].logoText">
+                    </div> -->
+
                     <button onclick="showShoppingCart()">add</button>
                 </div>
             </section>
@@ -34,6 +38,7 @@
                     <div id="shopping-cart">
 
                     </div>
+
                 </div>
 
             </section>
