@@ -11,6 +11,10 @@ const takumiMenu = [
     new Menu(restaurant[0], "Reis", "Mini Donburi", "Auf Reis. Wird mit einer Zutat deiner Wahl zubereitet.", 15.8, false, "mini-donburi.jpg")
 ];
 
+const categories = searchCategory(takumiMenu);
+const categoryBarRef = document.getElementById("category-bar");
+const menuRef = document.getElementById("menu");
+
 // #endregion
 
 // #region Rendering
@@ -24,15 +28,19 @@ function renderRestaurantMainPage(restId){
     restHeaderRef.innerHTML += getRestaurantMainPageTemplate(restId);
 }
 
+function renderCategoryBar(array){
+    categoryBarRef.innerHTML = "";
+    for (id = 0; id < array.length; id++){
+        categoryBarRef.innerHTML += getCategoryBar(id);
+    }
+}
+
 function renderMenu(){
-    const menuRef = document.getElementById("menu");
     menuRef.innerHTML = "";
     
-    const categories = searchCategory(takumiMenu);
-
     for (let categoryId = 0; categoryId < categories.length; categoryId++){
         menuRef.innerHTML += `
-            <h2>${categories[categoryId]}</h2>
+            <h2 id="${categories[categoryId]}">${categories[categoryId]}</h2>
             `
         for (let foodIdx = 0; foodIdx < takumiMenu.length; foodIdx++){
             if (categories[categoryId] == takumiMenu[foodIdx].category){
@@ -66,6 +74,8 @@ function searchCategory(array){
     return categoryList;
 }
 
+
+
 // #endregion
 
 // #region Shopping Cart
@@ -75,5 +85,6 @@ function searchCategory(array){
 // #region Testing
 // init(0);
 renderRestaurantMainPage(0);
+renderCategoryBar(categories);
 renderMenu();
 // #endregion

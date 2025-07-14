@@ -40,11 +40,25 @@ body{
 }
 
 h1{
-    font-family: 'Manrope-Medium';
+    font-family: 'Manrope-Bold';
     font-size: clamp(2.4rem, 1.5dvw, 5rem);
     text-align: center;
 }
 
+h2{
+    font-family: 'Manrope-Medium';
+    font-size: clamp(2.2rem, 1.5dvw, 3.5rem);
+}
+
+h3{
+    font-family: 'Manrope-Medium';
+    font-size: clamp(1.8rem, 1.5dvw, 2rem);
+}
+
+a{
+    font-family: 'Manrope-Bold';
+    color: #000;
+}
 footer{
     font-family: 'Manrope-Bold';
     color: white;

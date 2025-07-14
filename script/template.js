@@ -29,6 +29,12 @@ function getRestaurantMainPageTemplate(restId){
     `
 }
 
+function getCategoryBar(idx){
+    return `
+        <a href="#${categories[idx]}">${categories[idx]}</a>
+    `
+}
+
 function getMenuTemplate(index){
     return `
     <div id="single-menu" class="single-menu">
