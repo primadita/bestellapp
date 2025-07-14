@@ -21,6 +21,7 @@ function init(restId){
 function renderRestaurantMainPage(restId){
     const restHeaderRef = document.getElementById("content");
     restHeaderRef.innerHTML = "";
+    for (let restId = 0; restId < restaurant.length; restId++)
     restHeaderRef.innerHTML += getRestaurantMainPageTemplate(restId);
 }
 
@@ -34,7 +35,7 @@ function renderMenu(){
         menuRef.innerHTML += `
             <h2>${categories[categoryId]}</h2>
             `
-        for (let foodIdx = 0; foodIdx < takumiMenu.length; foodIdx++){
+        for (let foodIdx = 0; foodIdx < takumiMenu.length; foodIdx){
             if (categories[categoryId] == takumiMenu[foodIdx].category){
                 menuRef.innerHTML += getMenuTemplate(foodIdx);
             }
@@ -73,7 +74,5 @@ function searchCategory(array){
 // #endregion
 
 // #region Testing
-// init(0);
-renderRestaurantMainPage(0);
-renderMenu();
+console.log(renderMenu());
 // #endregion

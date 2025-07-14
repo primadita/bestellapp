@@ -4,9 +4,6 @@ header{
     background: #ff8000;
     height: 10dvh;
     display: flex;
-    position: sticky;
-    top: 0;
-    z-index: 10;
     .header-wrapper{
         width: 100%;
         max-width: 1920px;
@@ -45,9 +42,6 @@ header{
             display: flex;
             justify-content: center;
             align-items: end;
-            position: sticky;
-            top: 0;
-            z-index: 20;
             img{
                 height: 20dvh;
                 position: absolute;
@@ -71,36 +65,12 @@ header{
     }
 }
 #menu{
-    display: flex;
-    flex-direction: column;
-    /* padding: 8px; */
     .single-menu{
-        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-        height: auto;
-        min-height: 120px;
-        margin: 8px;
+        border: 2px solid grey;
+        height: 100px;
         display: flex;
-        align-items: center;
-        gap: 10px;
         img{
             height: 100px;
-            width: 130px ;
-            }
-        div{
-            #foodprice{
-                font-weight: bold;
-            }
-        }
-        #add-container{
-            position: absolute;
-            top:0;
-            right: 0;
-            button{
-                img{
-                    width: 3rem;
-                    height: auto;
-                }
-            }
         }
     }
 }

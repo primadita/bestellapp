@@ -36,12 +36,7 @@ function getMenuTemplate(index){
         <div>
             <h3>${takumiMenu[index].name}</h3>
             <p>${takumiMenu[index].description}</p>
-            <p id="foodprice">${Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(takumiMenu[index].price)}</p>
-        </div>
-        <div id="add-container">
-            <button onclick="showShoppingCart()">
-                <img src="./assets/icons/add.png" alt="add button">
-            </button>
+            <p id="foodprice">Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(${takumiMenu[index].price})</p>
         </div>
     </div>
     `

@@ -24,28 +24,21 @@
 }
 
 @font-face {
-    font-family: 'Manrope-Light';
-    src: url('../assets/fonts/Manrope-Light.ttf');
-}
-
-@font-face {
     font-family: 'Manrope-ExtraLight';
     src: url('../assets/fonts/Manrope-ExtraLight.ttf');
 }
 
 body{
     font-size: min(16px, 18px);
-    font-family: 'Manrope-Light';
+    font-family: 'Manrope-Regular';
     color: black;
 }
 
 h1{
     font-family: 'Manrope-Medium';
-    font-size: clamp(2.4rem, 1.5dvw, 5rem);
+    font-size: min(3rem, 6rem);
     text-align: center;
 }
-
 footer{
-    font-family: 'Manrope-Bold';
     color: white;
 }

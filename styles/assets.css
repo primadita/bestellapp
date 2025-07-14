@@ -1,1 +1,4 @@
 /* zum Stylen von Buttons usw */
+button{
+    cursor: pointer;
+}
