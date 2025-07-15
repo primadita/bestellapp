@@ -34,7 +34,7 @@
 }
 
 body{
-    font-size: min(16px, 18px);
+    font-size: clamp(16px,1.2dvw, 18px);
     font-family: 'Manrope-Light';
     color: black;
 }
