@@ -25,33 +25,38 @@
     <main>
         <div class="main-wrapper">
         <!-- #region Main Display -->
-            <section class="content-wrapper">
-                <div id="content" class="content">
+            <section id="mainpage" class="content-wrapper">
+                <div id="content">
                 </div>
                 <!-- #region category bar -->
-                <div id="category-bar">
+                <div id="category-bar" class="content">
                 </div>
                 <!-- #region MENU -->
                 <div id="menu" class="content">
                 </div>
                 <!-- #endregion -->
-                <button id="shopping-cart-btn" class="basket-btn">
-                    <img src="./assets/icons/shopping-cart-white.png" alt="shopping cart icon">
-                    Warenkorb
-                </button>
+                <div id="cart-in-main" class="content">
+                    <button id="shopping-cart-btn" class="basket-btn" onclick="switchToShoppingCart()">
+                        <img src="./assets/icons/shopping-cart-white.png" alt="shopping cart icon">
+                        Warenkorb
+                    </button>
+                </div>
         <!-- #endregion -->
             </section>
             <section class="basket-wrapper d-none" id="basket-sect">
                 <div class="basket">
                     <h1>Warenkorb</h1>
                     <div id="shopping-cart">
-                    <table id="order">
+                        <table id="order">
 
-                    </table>
+                        </table>
                     </div>
-
+                    <div id="ready-to-pay">
+                        <button class="basket-btn">Bezahlen</button>
+                    </div>
                 </div>
-
+                
+                
             </section>
         </div>
 

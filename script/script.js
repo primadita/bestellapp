@@ -14,6 +14,7 @@ const takumiMenu = [
 const categories = searchCategory(takumiMenu);
 const categoryBarRef = document.getElementById("category-bar");
 const menuRef = document.getElementById("menu");
+const basketRef = document.getElementById("basket-sect");
 
 // #endregion
 
@@ -55,7 +56,6 @@ function renderMenu(){
 
 // #region Main Site
 function showShoppingCart(){
-    const basketRef = document.getElementById("basket-sect");
     const shoppingCartRef = document.getElementById("shopping-cart");
     const shoppingCart = shoppingCartRef.innerHTML;
     
@@ -74,12 +74,24 @@ function searchCategory(array){
     return categoryList;
 }
 
+function switchToShoppingCart(){
+    const mainRef = document.getElementById("mainpage");
+    mainRef.classList.add("d-none");
+
+    basketRef.classList.remove("basket-wrapper");
+    basketRef.classList.remove("d-none");
+    basketRef.classList.add("basket-wrapper-alone");
+    // showShoppingCart();
+    
+}
 
 
 // #endregion
 
 // #region Shopping Cart
+function addToCart(){
 
+}
 // #endregion
 
 // #region Testing

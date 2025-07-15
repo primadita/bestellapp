@@ -4,9 +4,9 @@ header{
     background: #ff8000;
     height: 10dvh;
     display: flex;
-    position: sticky;
+    /* position: sticky;
     top: 0;
-    z-index: 30;
+    z-index: 30; */
     .header-wrapper{
         width: 100%;
         max-width: 1920px;
@@ -15,7 +15,7 @@ header{
         justify-content: space-between;
         padding: 24px 20px;
         img{
-            height: 8dvh;
+            height: 8rem;
         }
     }
 }
@@ -27,16 +27,19 @@ header{
     max-width: 1920px;
     display: flex;
 }
+
+.content{
+    width: 100%;
+    max-width: 1920px;
+    overflow: auto;
+}
+
 .content-wrapper{
     min-width: calc(100% - 308px);
     width: 100%;
     height: auto;
     min-height: calc(100dvh - 10dvh - 5dvh);
-    .content{
-        width: 100%;
-        max-width: 1920px;
-        overflow: auto;
-        /* position: sticky; */
+    #content{
         #restaurant-header{
             background: url('../assets/img/takumi-banner-small.jpg');
             height: 25dvh;
@@ -46,13 +49,16 @@ header{
             display: flex;
             justify-content: center;
             align-items: end;
-            position: sticky;
-            top: 0;
-            z-index: 10;
             img{
-                height: 20dvh;
+                height: 20rem;
                 position: absolute;
                 bottom: -10dvh;
+                @media (max-width: 1100px) {
+                    right: 10rem;
+                }
+                @media (max-width: 650px) {
+                    
+                }
             }
         }
         #restaurant-info{
@@ -79,8 +85,6 @@ header{
     display: flex;
     align-items: center;
     height: 5dvh;
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
     gap: 3rem;
     padding: 0.8rem 2.4rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -104,6 +108,9 @@ header{
             width: 130px ;
             }
         div{
+            p{
+               word-break: break-word; 
+            }
             #foodprice{
                 font-weight: bold;
             }
@@ -120,6 +127,12 @@ header{
             }
         }
     }
+}
+#cart-in-main{
+    padding: 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 /* #endregion */
