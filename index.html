@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/basket.css">
-    <link rel="stylesheet" href="./styles/assets.css">
+    <!-- <link rel="stylesheet" href="./styles/basket.css"> -->
+    <!-- <link rel="stylesheet" href="./styles/assets.css"> -->
     <script src="script/template.js" defer></script>
     <script src="script/db.js" defer></script>
     <script src="script/script.js" defer></script>
@@ -47,11 +47,22 @@
                 <div class="basket">
                     <h1>Warenkorb</h1>
                     <div id="shopping-cart">
-                        <table id="order">
-
-                        </table>
                     </div>
                     <div id="ready-to-pay">
+                        <table>
+                            <tr>
+                                <td>Zwischensumme: </td>
+                                <td id="sumfoodprice">0,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Lieferkosten: </td>
+                                <td id="deliverycost">0,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Gesamt: </td>
+                                <td id="totalcost">0,00 €</td>
+                            </tr>
+                        </table>
                         <button class="basket-btn">Bezahlen</button>
                     </div>
                 </div>
