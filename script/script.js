@@ -30,6 +30,7 @@ function initPrice(){
 // #region Rendering
 function init(restId){
     renderRestaurantMainPage(restId);
+    renderCategoryBar(categories);
     renderMenu();
 }
 function renderRestaurantMainPage(restId){
@@ -153,18 +154,27 @@ function calculatePrice(){
     totalPriceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalprice);
 }
 
-
-
 function deleteItem(index){
     document.getElementById("order" + index).remove();
     price[index] = 0;
     calculatePrice();
 }
+
+function purchase(){
+    const receiptRef = document.getElementById("")
+}
 // #endregion
 
+// #region Receipt
+function backToHome(){
+    document.getElementById("receipt-wrapper").classList.add("d-none");
+    init(0);
+}
+
 // #region Testing
-// init(0);
-renderRestaurantMainPage(0);
-renderCategoryBar(categories);
-renderMenu();
+init(0);
+
+// renderRestaurantMainPage(0);
+// renderCategoryBar(categories);
+// renderMenu();
 // #endregion

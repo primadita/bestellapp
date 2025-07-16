@@ -16,17 +16,15 @@ html{
         font-size: 8px;
     }
 }
+.content{
+    width: 100%;
+    max-width: 1920px;
+}
 header,
 main,
 footer {
   display: flex;
   justify-content: center;
-}
-button{
-    cursor: pointer;
-}
-a{
-    cursor: pointer;
 }
 .d-flex{
     display: flex;
