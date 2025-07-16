@@ -45,10 +45,30 @@ function getMenuTemplate(index){
             <p id="foodprice">${Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(takumiMenu[index].price)}</p>
         </div>
         <div id="add-container">
-            <button id="add${index}" onclick="showShoppingCart()">
+            <button id="add${index}" onclick="addToCart(${index})">
                 <img src="./assets/icons/add.png" alt="add button">
             </button>
         </div>
     </div>
+    `
+}
+
+function getOrderTemplate(index){
+    return `
+        <div id="order${index}" class="order">
+            <h3>${takumiMenu[index].name}</h3>
+            <div>
+            <button id="minus${index}" onclick="decreaseQuantity(${index})">
+                <img src="./assets/icons/minus.png" alt="minus button">
+            </button>
+            <span id="counter${index}">1</span>
+            <button id="plus${index}" onclick="increaseQuantity(${index})">
+                <img src="./assets/icons/add.png" alt="add button">
+            </button>
+            <span id="price${index}">${Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(takumiMenu[index].price)}</span>
+            <button id="delete${index}" onclick="deleteItem(${index})">
+                <img src="./assets/icons/trash.png" alt="delete item">
+            </button>
+        </div>
     `
 }

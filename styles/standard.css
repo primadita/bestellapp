@@ -22,6 +22,12 @@ footer {
   display: flex;
   justify-content: center;
 }
+button{
+    cursor: pointer;
+}
+a{
+    cursor: pointer;
+}
 .d-flex{
     display: flex;
 }

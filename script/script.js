@@ -16,6 +16,15 @@ const categoryBarRef = document.getElementById("category-bar");
 const menuRef = document.getElementById("menu");
 const basketRef = document.getElementById("basket-sect");
 
+let price = [];
+initPrice();
+
+function initPrice(){
+    for (i = 0; i < takumiMenu.length; i++){
+        price[i] = 0;
+    }
+    return price;
+}
 // #endregion
 
 // #region Rendering
@@ -41,6 +50,7 @@ function renderMenu(){
     
     for (let categoryId = 0; categoryId < categories.length; categoryId++){
         menuRef.innerHTML += `
+            <img src="./assets/img/category_${categories[categoryId]}.jpg" alt="separator image for the next section" class="separator"></img>
             <h2 id="${categories[categoryId]}">${categories[categoryId]}</h2>
             `
         for (let foodIdx = 0; foodIdx < takumiMenu.length; foodIdx++){
@@ -56,8 +66,8 @@ function renderMenu(){
 
 // #region Main Site
 function showShoppingCart(){
-    const shoppingCartRef = document.getElementById("shopping-cart");
-    const shoppingCart = shoppingCartRef.innerHTML;
+    // const shoppingCartRef = document.getElementById("shopping-cart");
+    // const shoppingCart = shoppingCartRef.innerHTML;
     
     basketRef.classList.remove('d-none');
     basketRef.classList.add('d-flex');
@@ -81,7 +91,6 @@ function switchToShoppingCart(){
     basketRef.classList.remove("basket-wrapper");
     basketRef.classList.remove("d-none");
     basketRef.classList.add("basket-wrapper-alone");
-    // showShoppingCart();
     
 }
 
@@ -89,8 +98,67 @@ function switchToShoppingCart(){
 // #endregion
 
 // #region Shopping Cart
-function addToCart(){
+function addToCart(index){
+    showShoppingCart();
+    const buttonRef = document.getElementById("add" + index);
+    const orderRef = document.getElementById("shopping-cart");
+    orderRef.innerHTML += getOrderTemplate(index);
+    price[index] = takumiMenu[index].price;
+    calculatePrice();
+}
 
+function increaseQuantity(index){
+    const counterRef = document.getElementById("counter" + index);
+    const priceRef = document.getElementById("price" + index);
+    
+    let counter = Number(counterRef.innerHTML);
+    counter = counter + 1;
+    counterRef.innerHTML = counter;
+    
+    price[index] = counter * takumiMenu[index].price;
+    priceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price[index]);
+    calculatePrice();
+}
+
+function decreaseQuantity(index){
+    const counterRef = document.getElementById("counter" + index);
+    const priceRef = document.getElementById("price" + index);
+    
+    let counter = Number(counterRef.innerHTML);
+    counter = counter - 1;
+    if (counter < 0){
+        counter = 0;
+    }
+    counterRef.innerHTML = counter;
+    
+    price[index] = counter * takumiMenu[index].price;
+    priceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price[index]);
+    calculatePrice();
+}
+
+function calculatePrice(){
+    let foodprice = 0;
+    let totalprice;
+    for (i = 0; i < price.length; i++){
+        foodprice += price[i];
+    }
+    totalprice = foodprice + restaurant[0].deliveryCost;
+
+    const foodPriceRef = document.getElementById("sumfoodprice");
+    const deliveryCostRef = document.getElementById("deliverycost");
+    const totalPriceRef = document.getElementById("totalcost");
+
+    foodPriceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(foodprice);
+    deliveryCostRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(restaurant[0].deliveryCost);
+    totalPriceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(totalprice);
+}
+
+
+
+function deleteItem(index){
+    document.getElementById("order" + index).remove();
+    price[index] = 0;
+    calculatePrice();
 }
 // #endregion
 

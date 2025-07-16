@@ -18,11 +18,10 @@ a{
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    width: 95%;
-    height: 80px;
+    width: 85%;
+    height: 60px;
     font-size: clamp(2rem, 1.2dvw, 2.4rem);
     cursor: pointer;
-    display: none;
     img{
         height: 70%;
     }

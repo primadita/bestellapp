@@ -8,8 +8,7 @@
         position: sticky;
         top: 10dvh;
         width: 300px;
-        height: auto;
-        min-height: calc(100dvh - 10dvh - 5dvh);
+        height: calc(100dvh - 10dvh - 5dvh);
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         padding: 24px 10px;
         display: flex;
@@ -23,9 +22,6 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            button{
-                width: 80%;
-            }
         }
     }
     @media (max-width:1100px) {
@@ -57,6 +53,11 @@
                 width: 80%;
             }
         }
-
+    }
+}
+.order{
+    display: flex;
+    img{
+        width: 20px;
     }
 }
