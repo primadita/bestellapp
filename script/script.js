@@ -161,15 +161,20 @@ function deleteItem(index){
 }
 
 function purchase(){
-    const receiptRef = document.getElementById("")
+    document.getElementById("main-wrapper").classList.remove("d-flex");
+    document.getElementById("main-wrapper").classList.add("d-none");
+    document.getElementById("receipt-wrapper").classList.remove("d-none");
 }
 // #endregion
 
 // #region Receipt
 function backToHome(){
     document.getElementById("receipt-wrapper").classList.add("d-none");
-    init(0);
+    document.getElementById("main-wrapper").classList.remove("d-none");
+    document.getElementById("main-wrapper").classList.add("d-flex");
+    // init(0);
 }
+// #endregion
 
 // #region Testing
 init(0);

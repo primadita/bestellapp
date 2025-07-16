@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="./styles/style.css">
     <!-- <link rel="stylesheet" href="./styles/basket.css"> -->
     <!-- <link rel="stylesheet" href="./styles/assets.css"> -->
-    <!-- <script src="script/template.js" defer></script>
-    <script src="script/db.js" defer></script> -->
-    <!-- <script src="script/script.js" defer></script> -->
+    <script src="script/template.js" defer></script>
+    <script src="script/db.js" defer></script>
+    <script src="script/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,7 +22,7 @@
         </div>
     </header>
     <main>
-        <div id="receipt-wrapper" class="d-none">
+        <div id="receipt-wrapper" class="d-flex d-none">
             <div id="receipt">
                 <img src="./assets/icons/done.png" alt="successful">
                 <h2>Deine Bestellung ist auf dem Weg zu dir</h2>
@@ -31,14 +31,47 @@
                 </button>
             </div>
         </div>
-        <!-- <div class="content">
+        <div id="main-wrapper" class="content d-flex">
             <section id="mainpage">
-
+                <div id="restaurant-header-logo">
+                
+                </div>
+                <div id="general-info" class="container">
+                </div>
+                <div id="category-bar" class="container">
+                </div>
+                <div id="menu" class="container">
+                </div>
+                <div id="cart-in-main" class="container">
+                    <button id="shopping-cart-btn" class="large-btn" onclick="switchToShoppingCart()">
+                        <img src="./assets/icons/shopping-cart-white.png" alt="shopping cart icon">
+                        Warenkorb
+                    </button>
+                </div>
             </section>
             <section id="shopping-cart">
-
+                <h1>Warenkorb</h1>
+                <div id="orderlist">
+                </div>
+                <div id="ready-to-pay">
+                    <table>
+                        <tr>
+                            <td>Zwischensumme: </td>
+                            <td id="sumfoodprice">0,00 €</td>
+                        </tr>
+                        <tr>
+                            <td>Lieferkosten: </td>
+                            <td id="deliverycost">0,00 €</td>
+                        </tr>
+                        <tr>
+                            <td>Gesamt: </td>
+                            <td id="totalcost">0,00 €</td>
+                        </tr>
+                    </table>
+                    <button id="purchase-btn" class="large-btn" onclick="purchase()">Bezahlen</button>
+                </div>
             </section>
-        </div> -->
+        </div>
 
     </main>
     <footer>

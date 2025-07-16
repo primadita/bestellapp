@@ -20,6 +20,9 @@ html{
     width: 100%;
     max-width: 1920px;
 }
+.container{
+    padding: 24px 16px;
+}
 header,
 main,
 footer {
