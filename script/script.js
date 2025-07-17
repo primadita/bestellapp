@@ -170,6 +170,13 @@ function purchase(){
     document.getElementById("main-wrapper").classList.add("d-none");
     document.getElementById("receipt-wrapper").classList.remove("d-none");
 }
+
+function closeShoppingCart(){
+    document.getElementById("shopping-cart").classList.remove("basket-wrapper-only");
+    document.getElementById("shopping-cart").classList.remove("d-flex");
+    document.getElementById("shopping-cart").classList.add("d-none");
+    document.getElementById("mainpage").classList.remove("d-none");
+}
 // #endregion
 
 // #region Receipt
