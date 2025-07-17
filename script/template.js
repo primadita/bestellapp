@@ -74,3 +74,7 @@ function getOrderTemplate(index){
         </div>
     `
 }
+
+function getSingleOrderTemplate(index){
+    
+}

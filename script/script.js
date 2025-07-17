@@ -29,7 +29,7 @@ function init(restId){
     renderRestaurantInfo(restId);
     renderCategoryBar(categories);
     renderMenu();
-    renderOrder();
+    renderAllOrder();
     
 }
 
@@ -65,7 +65,17 @@ function renderMenu(){
     }
 }
 
-function renderOrder(){
+function renderSingleOrder(arrIndex, newCounter, newPrice){
+    const singleOrderCounterRef = document.getElementById("counter" + arrIndex);
+    singleOrderCounterRef.innerHTML = newCounter;
+
+    const singleOrderPriceRef = document.getElementById("price" + arrIndex);
+    singleOrderPriceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(newPrice);
+
+    calculateTotalPrice();
+}
+
+function renderAllOrder(){
     const orderListRef = document.getElementById("orderlist");
     orderListRef.innerHTML = "";
     
@@ -113,20 +123,21 @@ function addToCart(index){
         const selected = new Order({menuname: takumiMenu[index].name, foodprice: takumiMenu[index].price});
         selectedArr.push(selected);
         selectedMenu.push(takumiMenu[index].name);
+        renderAllOrder();
     } else {
         newIndex = selectedMenu.indexOf(takumiMenu[index].name);
         selectedArr[newIndex].counter += 1;
         selectedArr[newIndex].calculateNewPrice();
+        renderSingleOrder(newIndex, selectedArr[newIndex].counter,selectedArr[newIndex].totalprice);
     }
-   
-    renderOrder();
 }
-
+    
 function increaseQuantity(index){
     selectedArr[index].counter += 1;
-    selectedArr[index].calculateNewPrice();
   
-    renderOrder();
+    selectedArr[index].calculateNewPrice();
+
+    renderSingleOrder(index, selectedArr[index].counter, selectedArr[index].totalprice);
 }
 
 function decreaseQuantity(index){
@@ -137,8 +148,9 @@ function decreaseQuantity(index){
     }
 
     selectedArr[index].calculateNewPrice();
-  
-    renderOrder();
+
+    renderSingleOrder(index, selectedArr[index].counter, selectedArr[index].totalprice);
+
 }
 
 function calculateTotalPrice(){
@@ -162,7 +174,7 @@ function deleteItem(index){
     selectedArr.splice(index, 1);
     selectedMenu.splice(index,1);
     calculateTotalPrice();
-    renderOrder();
+    renderAllOrder();
 }
 
 function purchase(){
@@ -173,6 +185,7 @@ function purchase(){
 
 function closeShoppingCart(){
     document.getElementById("shopping-cart").classList.remove("basket-wrapper-only");
+    document.getElementById("shopping-cart").classList.add("basket-wrapper");
     document.getElementById("shopping-cart").classList.remove("d-flex");
     document.getElementById("shopping-cart").classList.add("d-none");
     document.getElementById("mainpage").classList.remove("d-none");

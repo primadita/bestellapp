@@ -1,5 +1,3 @@
-
-
 class Menu {
     // #region attributes
     restaurant;
@@ -28,6 +26,7 @@ class Menu {
     getCompletePath(dishImg){
         this.img = this.#parentFolder + dishImg;
     }
+
     createAltText(){
         this.imgText = "This is the image of " + this.img;
     }
@@ -65,11 +64,11 @@ class Restaurant {
         this.bannerImg = this.#parentFolder + restBanner;
         this.logoImg = this.#parentFolder + restLogo;
     }
+
     createAltText(){
         this.bannerText = "This is header of " + this.name;
         this.logoText = "This is the logo of" + this.name;
-    };
-        
+    }; 
     // #endregion
 }
 
@@ -86,6 +85,7 @@ class Order {
         this.price = foodprice;
         this.calculateNewPrice();
     }
+
     // #region Methods
     calculateNewPrice(){
         this.totalprice = this.counter * this.price;
