@@ -72,3 +72,23 @@ class Restaurant {
         
     // #endregion
 }
+
+class Order {
+    // #region Attributes
+    name;
+    price;
+    counter = 1;
+    totalprice;
+    // #endregion
+
+    constructor({menuname, foodprice}={}){
+        this.name = menuname;
+        this.price = foodprice;
+        this.calculateNewPrice();
+    }
+    // #region Methods
+    calculateNewPrice(){
+        this.totalprice = this.counter * this.price;
+    }
+    // #endregion 
+}

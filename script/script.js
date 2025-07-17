@@ -14,7 +14,10 @@ const takumiMenu = [
 const categories = searchCategory(takumiMenu);
 const categoryBarRef = document.getElementById("category-bar");
 const menuRef = document.getElementById("menu");
-const basketRef = document.getElementById("basket-sect");
+const basketRef = document.getElementById("shopping-cart");
+
+let selectedArr = [];
+let selectedMenu = [];
 
 let price = [];
 initPrice();
@@ -29,14 +32,22 @@ function initPrice(){
 
 // #region Rendering
 function init(restId){
-    renderRestaurantMainPage(restId);
+    renderRestaurantLogo(restId);
+    renderRestaurantInfo(restId);
     renderCategoryBar(categories);
     renderMenu();
 }
-function renderRestaurantMainPage(restId){
-    const restHeaderRef = document.getElementById("content");
+
+function renderRestaurantLogo(restId){
+    const restHeaderRef = document.getElementById("restaurant-header-logo");
     restHeaderRef.innerHTML = "";
-    restHeaderRef.innerHTML += getRestaurantMainPageTemplate(restId);
+    restHeaderRef.innerHTML += getRestaurantLogo(restId);
+}
+
+function renderRestaurantInfo(restId){
+    const restInfoRef = document.getElementById("general-info");
+    restInfoRef.innerHTML = "";
+    restInfoRef.innerHTML += getRestaurantInfoTemplate(restId);
 }
 
 function renderCategoryBar(array){
@@ -50,30 +61,27 @@ function renderMenu(){
     menuRef.innerHTML = "";
     
     for (let categoryId = 0; categoryId < categories.length; categoryId++){
-        menuRef.innerHTML += `
-            <img src="./assets/img/category_${categories[categoryId]}.jpg" alt="separator image for the next section" class="separator"></img>
-            <h2 id="${categories[categoryId]}">${categories[categoryId]}</h2>
-            `
+        menuRef.innerHTML += getFoodTitleTemplate(categoryId);
         for (let foodIdx = 0; foodIdx < takumiMenu.length; foodIdx++){
             if (categories[categoryId] == takumiMenu[foodIdx].category){
                 menuRef.innerHTML += getMenuTemplate(foodIdx);
             }
         }
-        
+    }
+}
+
+function renderOrder(){
+    const orderListRef = document.getElementById("orderlist");
+    orderListRef.innerHTML = "";
+    
+    for (i = 0; i < selectedArr.length; i++){
+        orderListRef.innerHTML += getOrderTemplate(i);
     }
 }
 // #endregion
 
 
 // #region Main Site
-function showShoppingCart(){
-    // const shoppingCartRef = document.getElementById("shopping-cart");
-    // const shoppingCart = shoppingCartRef.innerHTML;
-    
-    basketRef.classList.remove('d-none');
-    basketRef.classList.add('d-flex');
-}
-
 function searchCategory(array){
     let categoryList =[];
     for (let i = 0; i < array.length; i++){
@@ -85,65 +93,65 @@ function searchCategory(array){
     return categoryList;
 }
 
+function showShoppingCart(){
+    basketRef.classList.remove('d-none');
+    basketRef.classList.add('d-flex');
+}
+
 function switchToShoppingCart(){
     const mainRef = document.getElementById("mainpage");
     mainRef.classList.add("d-none");
 
     basketRef.classList.remove("basket-wrapper");
     basketRef.classList.remove("d-none");
-    basketRef.classList.add("basket-wrapper-alone");
+    basketRef.classList.add("basket-wrapper-only");
     
 }
-
-
 // #endregion
 
 // #region Shopping Cart
 function addToCart(index){
     showShoppingCart();
-    const buttonRef = document.getElementById("add" + index);
-    const orderRef = document.getElementById("shopping-cart");
-    orderRef.innerHTML += getOrderTemplate(index);
-    price[index] = takumiMenu[index].price;
-    calculatePrice();
+  
+    if (!selectedMenu.includes(takumiMenu[index].name)){
+        const selected = new Order({menuname: takumiMenu[index].name, foodprice: takumiMenu[index].price});
+        selectedArr.push(selected);
+        selectedMenu.push(takumiMenu[index].name);
+    } else {
+        newIndex = selectedMenu.indexOf(takumiMenu[index].name);
+        selectedArr[newIndex].counter += 1;
+        selectedArr[newIndex].calculateNewPrice();
+    }
+    calculateTotalPrice();
+    renderOrder();
 }
 
 function increaseQuantity(index){
-    const counterRef = document.getElementById("counter" + index);
-    const priceRef = document.getElementById("price" + index);
-    
-    let counter = Number(counterRef.innerHTML);
-    counter = counter + 1;
-    counterRef.innerHTML = counter;
-    
-    price[index] = counter * takumiMenu[index].price;
-    priceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price[index]);
-    calculatePrice();
+    selectedArr[index].counter += 1;
+    selectedArr[index].calculateNewPrice();
+    calculateTotalPrice();
+    renderOrder();
 }
 
 function decreaseQuantity(index){
-    const counterRef = document.getElementById("counter" + index);
-    const priceRef = document.getElementById("price" + index);
-    
-    let counter = Number(counterRef.innerHTML);
-    counter = counter - 1;
-    if (counter < 0){
-        counter = 0;
+    selectedArr[index].counter -= 1;
+
+    if (selectedArr[index].counter < 0){
+        selectedArr[index].counter = 0;
     }
-    counterRef.innerHTML = counter;
-    
-    price[index] = counter * takumiMenu[index].price;
-    priceRef.innerHTML = Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price[index]);
-    calculatePrice();
+
+    selectedArr[index].calculateNewPrice();
+    calculateTotalPrice();
+    renderOrder();
 }
 
-function calculatePrice(){
+function calculateTotalPrice(){
     let foodprice = 0;
-    let totalprice;
-    for (i = 0; i < price.length; i++){
-        foodprice += price[i];
+   
+    for (let idx = 0; idx < selectedArr.length; idx++){
+        foodprice += selectedArr[idx].totalprice;
     }
-    totalprice = foodprice + restaurant[0].deliveryCost;
+    let totalprice = foodprice + restaurant[0].deliveryCost;
 
     const foodPriceRef = document.getElementById("sumfoodprice");
     const deliveryCostRef = document.getElementById("deliverycost");
@@ -156,8 +164,9 @@ function calculatePrice(){
 
 function deleteItem(index){
     document.getElementById("order" + index).remove();
-    price[index] = 0;
-    calculatePrice();
+    // price[index] = 0;
+    calculateTotalPrice();
+    renderOrder();
 }
 
 function purchase(){
@@ -170,9 +179,16 @@ function purchase(){
 // #region Receipt
 function backToHome(){
     document.getElementById("receipt-wrapper").classList.add("d-none");
+
     document.getElementById("main-wrapper").classList.remove("d-none");
     document.getElementById("main-wrapper").classList.add("d-flex");
-    // init(0);
+    
+    document.getElementById("mainpage").classList.remove("d-none");
+
+    document.getElementById("shopping-cart").classList.add("d-none");
+    document.getElementById("shopping-cart"). classList.add("basket-wrapper");
+    document.getElementById("shopping-cart").classList.remove("basket-wrapper-only");
+    init(0);
 }
 // #endregion
 

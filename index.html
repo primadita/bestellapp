@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,11 @@
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <!-- <link rel="stylesheet" href="./styles/basket.css"> -->
-    <!-- <link rel="stylesheet" href="./styles/assets.css"> -->
     <script src="script/template.js" defer></script>
     <script src="script/db.js" defer></script>
     <script src="script/script.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="content">
@@ -21,7 +21,9 @@
             <img src="./assets/icons/burgermenu-white.png" alt="symbol of burgermenu">
         </div>
     </header>
+
     <main>
+        <!-- #region RECEIPT -->
         <div id="receipt-wrapper" class="d-flex d-none">
             <div id="receipt">
                 <img src="./assets/icons/done.png" alt="successful">
@@ -31,10 +33,11 @@
                 </button>
             </div>
         </div>
+        <!-- #endregion -->
+        <!-- #region MAIN VIEW -->
         <div id="main-wrapper" class="content d-flex">
             <section id="mainpage">
                 <div id="restaurant-header-logo">
-                
                 </div>
                 <div id="general-info" class="container">
                 </div>
@@ -49,7 +52,10 @@
                     </button>
                 </div>
             </section>
-            <section id="shopping-cart">
+        <!-- #endregion -->
+
+        <!-- #region SHOPPING CART -->
+            <section id="shopping-cart" class="basket-wrapper d-none">
                 <h1>Warenkorb</h1>
                 <div id="orderlist">
                 </div>
@@ -71,76 +77,11 @@
                     <button id="purchase-btn" class="large-btn" onclick="purchase()">Bezahlen</button>
                 </div>
             </section>
+        <!-- #endregion -->
         </div>
-
     </main>
     <footer>
         <p>Design by Felicious, 2025</p>
     </footer>
 </body>
-
-<!-- <body>
-    <header>
-        <div class="header-wrapper">
-            <img src="./assets/icons/bestellapp-logo.svg" alt="Bestellapp logo">
-            <img src="./assets/icons/burgermenu-white.png" alt="symbol of burgermenu">
-        </div>
-    </header>
-    <main>
-        <div class="main-wrapper">
-
-            <section id="mainpage" class="content-wrapper">
-                <div id="content">
-                </div>
-
-                <div id="category-bar" class="content">
-                </div>
-
-                <div id="menu" class="content">
-                </div>
-
-                <div id="cart-in-main" class="content">
-                    <button id="shopping-cart-btn" class="basket-btn" onclick="switchToShoppingCart()">
-                        <img src="./assets/icons/shopping-cart-white.png" alt="shopping cart icon">
-                        Warenkorb
-                    </button>
-                </div>
-
-            </section>
-            <section class="basket-wrapper d-none" id="basket-sect">
-                <div class="basket">
-                    <h1>Warenkorb</h1>
-                    <div id="shopping-cart">
-                    </div>
-                    <div id="ready-to-pay">
-                        <table>
-                            <tr>
-                                <td>Zwischensumme: </td>
-                                <td id="sumfoodprice">0,00 €</td>
-                            </tr>
-                            <tr>
-                                <td>Lieferkosten: </td>
-                                <td id="deliverycost">0,00 €</td>
-                            </tr>
-                            <tr>
-                                <td>Gesamt: </td>
-                                <td id="totalcost">0,00 €</td>
-                            </tr>
-                        </table>
-                        <button id="purchase-btn" class="basket-btn">Bezahlen</button>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="success-order" class="d-none">
-            <div id="receipt">
-                <button id="to-home-btn" class="basket-btn" onclick="init(0)">Zurück zum Homepage</button>
-            </div>
-        </div>
-    </main>
-    <footer>
-        Design by Felicious, 2025.
-    </footer>
-</body> -->
 </html>
