@@ -58,23 +58,19 @@ function getMenuTemplate(index){
 function getOrderTemplate(index){
     return `
         <div id="order${index}" class="order">
-            <h3>${selectedArr[index].name}</h3>
+            <h3>${takumiMenu[index].name}</h3>
             <div>
             <button id="minus${index}" class="small-btn" onclick="decreaseQuantity(${index})">
                 <img src="./assets/icons/minus.png" alt="minus button">
             </button>
-            <span id="counter${index}">${selectedArr[index].counter}</span>
+            <span id="counter${index}">${takumiMenu[index].amount}</span>
             <button id="plus${index}" class="small-btn" onclick="increaseQuantity(${index})">
                 <img src="./assets/icons/add.png" alt="add button">
             </button>
-            <span id="price${index}">${Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(selectedArr[index].totalprice)}</span>
+            <span id="price${index}">${Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(takumiMenu[index].calculateNewPrice())}</span>
             <button id="delete${index}" class="small-btn" onclick="deleteItem(${index})">
                 <img src="./assets/icons/trash.png" alt="delete item">
             </button>
         </div>
     `
-}
-
-function getSingleOrderTemplate(index){
-    
 }

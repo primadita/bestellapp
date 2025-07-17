@@ -8,6 +8,7 @@ class Menu {
     isFavorite;
     img;
     imgText;
+    amount = 0;
     #parentFolder = "./assets/img/";
     // #endregion
 
@@ -29,6 +30,23 @@ class Menu {
 
     createAltText(){
         this.imgText = "This is the image of " + this.img;
+    }
+
+    increaseAmount(){
+        this.amount = this.amount + 1;
+        return this.amount;
+    }
+
+    decreaseAmount(){
+        this.amount -= 1;
+        if (this.amount < 0){
+            this.amount = 0;
+        }
+        return this.amount;
+    }
+
+    calculateNewPrice(){
+        return this.amount * this.price;
     }
     // #endregion
 }
@@ -70,25 +88,4 @@ class Restaurant {
         this.logoText = "This is the logo of" + this.name;
     }; 
     // #endregion
-}
-
-class Order {
-    // #region Attributes
-    name;
-    price;
-    counter = 1;
-    totalprice;
-    // #endregion
-
-    constructor({menuname, foodprice}={}){
-        this.name = menuname;
-        this.price = foodprice;
-        this.calculateNewPrice();
-    }
-
-    // #region Methods
-    calculateNewPrice(){
-        this.totalprice = this.counter * this.price;
-    }
-    // #endregion 
 }

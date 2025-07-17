@@ -118,47 +118,33 @@ function switchToShoppingCart(){
 // #region Shopping Cart
 function addToCart(index){
     showShoppingCart();
-  
-    if (!selectedMenu.includes(takumiMenu[index].name)){
-        const selected = new Order({menuname: takumiMenu[index].name, foodprice: takumiMenu[index].price});
-        selectedArr.push(selected);
-        selectedMenu.push(takumiMenu[index].name);
-        renderAllOrder();
+
+    const orderRef = document.getElementById("orderlist");
+    if (takumiMenu[index].amount == 0){
+        takumiMenu[index].amount = 1;
+        orderRef.innerHTML += getOrderTemplate(index);
+        calculateTotalPrice();
     } else {
-        newIndex = selectedMenu.indexOf(takumiMenu[index].name);
-        selectedArr[newIndex].counter += 1;
-        selectedArr[newIndex].calculateNewPrice();
-        renderSingleOrder(newIndex, selectedArr[newIndex].counter,selectedArr[newIndex].totalprice);
-    }
+        renderSingleOrder(index, takumiMenu[index].increaseAmount(), takumiMenu[index].calculateNewPrice());
+    }          
 }
     
 function increaseQuantity(index){
-    selectedArr[index].counter += 1;
-  
-    selectedArr[index].calculateNewPrice();
-
-    renderSingleOrder(index, selectedArr[index].counter, selectedArr[index].totalprice);
+    renderSingleOrder(index, takumiMenu[index].increaseAmount(), takumiMenu[index].calculateNewPrice());
 }
 
 function decreaseQuantity(index){
-    selectedArr[index].counter -= 1;
-
-    if (selectedArr[index].counter < 0){
-        selectedArr[index].counter = 0;
-    }
-
-    selectedArr[index].calculateNewPrice();
-
-    renderSingleOrder(index, selectedArr[index].counter, selectedArr[index].totalprice);
+    renderSingleOrder(index, takumiMenu[index].decreaseAmount(), takumiMenu[index].calculateNewPrice());
 
 }
 
 function calculateTotalPrice(){
     let foodprice = 0;
-   
-    for (let idx = 0; idx < selectedArr.length; idx++){
-        foodprice += selectedArr[idx].totalprice;
+
+    for (let idx = 0; idx < takumiMenu.length; idx++){
+        foodprice += takumiMenu[idx].calculateNewPrice();
     }
+
     let totalprice = foodprice + restaurant[0].deliveryCost;
 
     const foodPriceRef = document.getElementById("sumfoodprice");
@@ -171,10 +157,10 @@ function calculateTotalPrice(){
 }
 
 function deleteItem(index){
-    selectedArr.splice(index, 1);
-    selectedMenu.splice(index,1);
+    document.getElementById("order" + index).remove();
+    takumiMenu[index].amount = 0;
+    takumiMenu[index].calculateNewPrice();
     calculateTotalPrice();
-    renderAllOrder();
 }
 
 function purchase(){
