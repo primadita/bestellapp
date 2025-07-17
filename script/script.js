@@ -15,22 +15,16 @@ const categories = searchCategory(takumiMenu);
 const categoryBarRef = document.getElementById("category-bar");
 const menuRef = document.getElementById("menu");
 const basketRef = document.getElementById("shopping-cart");
-
-let selectedArr = [];
-let selectedMenu = [];
+const orderRef = document.getElementById("orderlist");
 
 // #endregion
 
 // #region Rendering
 function init(restId){
-    selectedArr = [];
-    selectedMenu = [];
     renderRestaurantLogo(restId);
     renderRestaurantInfo(restId);
     renderCategoryBar(categories);
     renderMenu();
-    renderAllOrder();
-    
 }
 
 function renderRestaurantLogo(restId){
@@ -74,16 +68,6 @@ function renderSingleOrder(arrIndex, newCounter, newPrice){
 
     calculateTotalPrice();
 }
-
-function renderAllOrder(){
-    const orderListRef = document.getElementById("orderlist");
-    orderListRef.innerHTML = "";
-    
-    for (i = 0; i < selectedArr.length; i++){
-        orderListRef.innerHTML += getOrderTemplate(i);
-    }
-    calculateTotalPrice();
-}
 // #endregion
 
 
@@ -119,7 +103,7 @@ function switchToShoppingCart(){
 function addToCart(index){
     showShoppingCart();
 
-    const orderRef = document.getElementById("orderlist");
+    // const orderRef = document.getElementById("orderlist");
     if (takumiMenu[index].amount == 0){
         takumiMenu[index].amount = 1;
         orderRef.innerHTML += getOrderTemplate(index);
@@ -180,6 +164,7 @@ function closeShoppingCart(){
 
 // #region Receipt
 function backToHome(){
+    orderRef.innerHTML = "";
     document.getElementById("receipt-wrapper").classList.add("d-none");
 
     document.getElementById("main-wrapper").classList.remove("d-none");
